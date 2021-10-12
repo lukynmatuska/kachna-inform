@@ -56,25 +56,24 @@ async function updateLastState(newStateData) {
 async function main() {
     const data = await getState();
     if (JSON.stringify(data) == JSON.stringify(global.lastResult)) {
-        console.log("Data didn't changed.");
-    } else if (!global.restart) {
-        console.log(`Restarted at ${moment().format('LLLL')}.`);
-        await updateLastState(data);
-        await sendMail(
-            process.env.MAIL_TO || "lukynmatuska@gmail.com",
-            process.env.MAIL_SUBJECT || "Kachna",
-            data.state,
-            JSON.stringify(data)
-        );
-    } else {
-        global.restart = false;
-        await sendMail(
-            process.env.MAIL_TO || "lukynmatuska@gmail.com",
-            process.env.MAIL_SUBJECT || "Kachna",
-            "restart",
-            `<p><b>Restarted</b> at ${moment().format('LLLL')}.</p>`
-        );
+        return console.log("Data didn't changed.");
     }
+    await updateLastState(data);
+
+    let text = data.state;
+    let html = JSON.stringify(data);
+    if (global.restart) {
+        console.log(`Restarted at ${moment().format('LLLL')}.`);
+        global.restart = false;
+        text = `Restart&${data.state}`;
+        html = `<p><b>Restarted</b> at ${moment().format('LLLL')}.</p>`;
+    }
+    await sendMail(
+        process.env.MAIL_TO || "lukynmatuska@gmail.com",
+        process.env.MAIL_SUBJECT || "Kachna",
+        text,
+        html
+    );
 }
 
 const job = new CronJob(
