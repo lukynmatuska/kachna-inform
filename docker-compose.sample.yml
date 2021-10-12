@@ -1,0 +1,24 @@
+version: "3.5"
+services:
+  kachna:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      # args:
+      #   - http_proxy
+      #   - https_proxy
+      #   - no_proxy
+    image: kachna-inform
+    restart: always
+    # ports:
+    #   - "8081:8081"
+    environment:
+      CRON_TIMING: "* * * * *"
+      CRON_TIMEZONE: "Europe/Prague"
+      MAIL_TO: "user@example.com, fitstudent@example.com"
+      MAIL_SUBJECT: "Kachna state changed"
+      NODEMAILER_SENDER: "Kachna <kachna@example.com>"
+      NODEMAILER_TRANSPORT: '{"host": "", "port": 465, "secure": true, "auth": {"user": "user@user.net", "pass": "pass"}}'
+      # NODEMAILER_DEFAULTS
+    stdin_open: true  # -i
+    tty: true         # -t
