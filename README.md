@@ -1,5 +1,14 @@
 # Kachna inform
 
+## Enviroment variables
+- CRON_TIMING: "* * * * *"
+- CRON_TIMEZONE: "Europe/Prague"
+- MAIL_TO: "user@example.com, fitstudent@example.com"
+- MAIL_SUBJECT: "Kachna state changed"
+- NODEMAILER_SENDER: "Kachna <kachna@example.com>"
+- NODEMAILER_TRANSPORT: '{"host": "", "port": 465, "secure": true, "auth": {"user": "user@user.net", "pass": "pass"}}'
+- NODEMAILER_DEFAULTS
+
 ## Docker compose
 
 ```batch
