@@ -62,14 +62,17 @@ async function main() {
 
     let text = data.state;
     let html = JSON.stringify(data);
+    if (data.openedByName != undefined) {
+        text = `${text}By${data.openedByName}`;
+    }
     if (global.restart) {
         console.log(`Restarted at ${moment().format('LLLL')}.`);
         global.restart = false;
-        text = `Restart&${data.state}`;
+        text = `Restart&${text}`;
         html = `<p><b>Restarted</b> at ${moment().format('LLLL')}.</p>`;
     }
     await sendMail(
-        process.env.MAIL_TO || "lukynmatuska@gmail.com",
+        process.env.MAIL_TO || "fitstudent@example.com, user@example.com",
         process.env.MAIL_SUBJECT || "Kachna",
         text,
         html
