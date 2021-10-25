@@ -1,6 +1,7 @@
 # Kachna inform
 
 ## Enviroment variables
+
 - CRON_TIMING: "* * * * *"
 - CRON_TIMEZONE: "Europe/Prague"
 - MAIL_TO: "user@example.com, fitstudent@example.com"
@@ -18,12 +19,6 @@ cp docker-compose.sample.yml docker-compose.yml
 
 # Edit docker-compose.yml
 vim docker-compose.yml
-
-# Copy mongo init file
-cp mongo-init.sample.js mongo-init.js
-
-# Edit database credentials
-vim mongo-init.js
 
 # Start containers
 docker-compose up -d

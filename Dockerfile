@@ -10,12 +10,14 @@ COPY package*.json ./
 
 RUN npm install
 RUN npm install pm2 -g
+RUN npm install typescript -g
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
+RUN tsc -build
 
 # EXPOSE 3000
 #CMD [ "node", "index.js" ]
-CMD ["pm2-runtime", "index.js"]
+CMD ["pm2-runtime", "dist/index.js"]
