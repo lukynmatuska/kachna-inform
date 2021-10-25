@@ -87,6 +87,7 @@ class Main {
     }
 }
 
+moment.locale(process.env.MOMENT_LOCALE || 'en');
 console.log(`${moment().format('LLLL')} Application started`);
 const main = new Main();
 new CronJob(
