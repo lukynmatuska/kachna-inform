@@ -35,7 +35,7 @@ class Main {
             },
             method: 'GET',
             responseType: 'json',
-            url: 'https://www.su.fit.vutbr.cz/iskachnaopen/api/duck/currentState',
+            url: process.env.API_URL,
             createXHR: () => new XMLHttpRequest()
         });
 

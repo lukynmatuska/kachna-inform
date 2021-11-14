@@ -16,6 +16,7 @@ services:
       CRON_TIMING: "* * * * *"
       CRON_TIMEZONE: "Europe/Prague"
       TZ: "Europe/Prague"
+      API_URL: "https://www.su.fit.vutbr.cz/iskachnaopen/api/duck/currentState"
       MAIL_TO: "user@example.com, fitstudent@example.com"
       MAIL_TO_RESTART: "admin@example.com"
       MAIL_SUBJECT: "Kachna state changed"
