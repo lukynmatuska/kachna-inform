@@ -22,7 +22,7 @@
   "homepage": "https://github.com/lukynmatuska/kachna-inform#readme",
   "dependencies": {
     "cron": "^1.8.2",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "nodemailer": "^6.7.0",
     "rxjs": "^6.6.0",
     "xmlhttprequest": "1.8.0"
